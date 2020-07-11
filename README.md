@@ -1,6 +1,7 @@
 # VanitySearch
 
-VanitySearch is a bitcoin address prefix finder. If you want to generate safe private keys, use the -s option to enter your passphrase which will be used for generating a base key as for BIP38 standard (*VanitySeacrh.exe -s "My PassPhrase" 1MyPrefix*). You can also use *VanitySeacrh.exe -ps "My PassPhrase"* which will add a crypto secure seed to your passphrase.\
+VanitySearch is a bitcoin address prefix finder. If you want to generate safe private keys, use the -s option to enter your passphrase which will be used for generating a base key as for BIP38 standard (`VanitySeacrh.exe -s "My PassPhrase" 1MyPrefix`). You can also use `VanitySeacrh.exe -ps "My PassPhrase"` which will add a crypto secure seed to your passphrase.
+
 VanitySearch may not compute a good grid size for your GPU, so try different values using -g option in order to get the best performances. If you want to use GPUs and CPUs together, you may have best performances by keeping one CPU core for handling GPU(s)/CPU exchanges (use -t option to set the number of CPU threads).
 
 # Feature
@@ -26,7 +27,7 @@ VanitySearch may not compute a good grid size for your GPU, so try different val
 
 You can downlad latest release from https://github.com/JeanLucPons/VanitySearch/releases
 
-```
+```txt
 VanitySeacrh [-check] [-v] [-u] [-b] [-c] [-gpu] [-stop] [-i inputfile]
              [-gpuId gpuId1[,gpuId2,...]] [-g g1x,g1y,[,g2x,g2y,...]]
              [-o outputfile] [-m maxFound] [-ps seed] [-s seed] [-t nbThread]
@@ -60,8 +61,8 @@ VanitySeacrh [-check] [-v] [-u] [-b] [-c] [-gpu] [-stop] [-i inputfile]
 
 Exemple (Windows, Intel Core i7-4770 3.4GHz 8 multithreaded cores, GeForce GTX 1050 Ti):
 
-```
-C:\C++\VanitySearch\x64\Release>VanitySearch.exe -stop -gpu 1TryMe
+```cmd
+C:\> VanitySearch.exe -stop -gpu 1TryMe
 VanitySearch v1.17
 Difficulty: 15318045009
 Search: 1TryMe [Compressed]
@@ -70,13 +71,14 @@ Base Key: DA12E013325F12D6B68520E327847218128B788E6A9F2247BC104A0EE2818F44
 Number of CPU thread: 7
 GPU: GPU #0 GeForce GTX 1050 Ti (6x128 cores) Grid(48x128)
 [251.82 Mkey/s][GPU 235.91 Mkey/s][Total 2^32.82][Prob 39.1%][50% in 00:00:12][Found 0]
+
 PubAddress: 1TryMeJT7cfs4M6csEyhWVQJPAPmJ4NGw
 Priv (WIF): p2pkh:Kxs4iWcqYHGBfzVpH4K94STNMHHz72DjaCuNdZeM5VMiP9zxMg15
 Priv (HEX): 0x310DBFD6AAB6A63FC71CAB1150A0305ECABBE46819641D2594155CD41D081AF1
 ```
 
-```
-C:\C++\VanitySearch\x64\Release>VanitySearch.exe -stop -gpu 3MyCoin
+```cmd
+C:\> VanitySearch.exe -stop -gpu 3MyCoin
 VanitySearch v1.11
 Difficulty: 15318045009
 Search: 3MyCoin [Compressed]
@@ -85,13 +87,14 @@ Base Key:FAF4F856077398AE087372110BF47A1A713C8F94B19CDD962D240B6A853CAD8B
 Number of CPU thread: 7
 GPU: GPU #0 GeForce GTX 1050 Ti (6x128 cores) Grid(48x128)
 124.232 MK/s (GPU 115.601 MK/s) (2^33.18) [P 47.02%][50.00% in 00:00:07][0]
+
 Pub Addr: 3MyCoinoA167kmgPprAidSvv5NoM3Nh6N3
 Priv (WIF): p2wpkh-p2sh:L2qvghanHHov914THEzDMTpAyoRmxo7Rh85FLE9oKwYUrycWqudp
 Priv (HEX): 0xA7D14FBF43696CA0B3DBFFD0AB7C9ED740FE338B2B856E09F2E681543A444D58
 ```
 
-```
-C:\C++\VanitySearch\x64\Release>VanitySearch.exe -stop -gpu bc1quantum
+```cmd
+C:\> VanitySearch.exe -stop -gpu bc1quantum
 VanitySearch v1.11
 Difficulty: 1073741824
 Search: bc1quantum [Compressed]
@@ -100,6 +103,7 @@ Base Key:B00FD8CDA85B11D4744C09E65C527D35E231D19084FBCA0BF2E48186F31936AE
 Number of CPU thread: 7
 GPU: GPU #0 GeForce GTX 1050 Ti (6x128 cores) Grid(48x128)
 256.896 MK/s (GPU 226.482 MK/s) (2^28.94) [P 38.03%][50.00% in 00:00:00][0]
+
 Pub Addr: bc1quantum898l8mx5pkvq2x250kkqsj7enpx3u4yt
 Priv (WIF): p2wpkh:L37xBVcFGeAZ9Tii7igqXBWmfiBhiwwiKQmchNXPV2LNREXQDLCp
 Priv (HEX): 0xB00FD8CDA85B11D4744C09E65C527D35E2B1D19095CFCA0BF2E48186F31979C2
@@ -113,8 +117,9 @@ For instance, Alice wants a nice prefix but does not have CPU power. Bob has the
 ## Step 1
 
 Alice generates a key pair on her computer then send the generated public key and the wanted prefix to Bob. It can be done by email, nothing is secret.  Nevertheless, Alice has to keep safely the private key and not expose it.
-```
-VanitySearch.exe -s "AliceSeed" -kp
+```cmd
+C:\> VanitySearch.exe -s "AliceSeed" -kp
+
 Priv : L4U2Ca2wyo721n7j9nXM9oUWLzCj19nKtLeJuTXZP3AohW9wVgrH
 Pub  : 03FC71AE1E88F143E8B05326FC9A83F4DAB93EA88FFEACD37465ED843FCC75AA81
 ```
@@ -123,8 +128,8 @@ Note: The key pair is a standard SecpK1 key pair and can be generated with a thi
 ## Step 2
 
 Bob runs VanitySearch using the Alice's public key and the wanted prefix.
-```
-VanitySearch.exe -sp 03FC71AE1E88F143E8B05326FC9A83F4DAB93EA88FFEACD37465ED843FCC75AA81 -gpu -stop -o keyinfo.txt 1ALice
+```cmd
+C:\> VanitySearch.exe -sp 03FC71AE1E88F143E8B05326FC9A83F4DAB93EA88FFEACD37465ED843FCC75AA81 -gpu -stop -o keyinfo.txt 1ALice
 ```
 It generates a keyinfo.txt file containing the partial private key.
 ```
@@ -137,8 +142,8 @@ Bob sends back this file to Alice. It can also be done by email. The partial pri
 
 Alice can then reconstructs the final private key using her private key (the one generated in step 1) and the keyinfo.txt from Bob.
 
-```
-VanitySearch.exe -rp L4U2Ca2wyo721n7j9nXM9oUWLzCj19nKtLeJuTXZP3AohW9wVgrH keyinfo.txt
+```cmd
+C:\> VanitySearch.exe -rp L4U2Ca2wyo721n7j9nXM9oUWLzCj19nKtLeJuTXZP3AohW9wVgrH keyinfo.txt
 
 Pub Addr: 1ALicegohz9YgrLLa4ADCmam7X2Zr6xJZx
 Priv (WIF): p2pkh:L1NHFgT826hYNpNN2qd85S7F7cyZTEJ4QQeEinsCFzknt3nj9gqg
@@ -164,9 +169,9 @@ We have a hardware capable of generating **1GKey/s** and we have an input list o
 |----------|:-------------:|
 | 1 second |6.8e-34|
 | 1 minute |4e-32|
-| 1 hour |2.4e-30|
-| 1 day |5.9e-29|
-| 1 year |2.1e-26|
+| 1 hour   |2.4e-30|
+| 1 day    |5.9e-29|
+| 1 year   |2.1e-26|
 | 10 years | 2.1e-25 |
 | 1000 years | 2.1e-23 |
 | Age of earth | 8.64e-17 |
@@ -180,11 +185,11 @@ As you can see, even with a competitive hardware, it is very unlikely that you f
 
 ## Windows
 
-Intall CUDA SDK and open VanitySearch.sln in Visual C++ 2017.\
-You may need to reset your *Windows SDK version* in project properties.\
-In Build->Configuration Manager, select the *Release* configuration.\
-Build and enjoy.\
-\
+ - Intall CUDA SDK and open VanitySearch.sln in Visual C++ 2017.
+ - You may need to reset your *Windows SDK version* in project properties.
+ - In Build->Configuration Manager, select the *Release* configuration.
+ - Build and enjoy.
+
 Note: The current relase has been compiled with CUDA SDK 10.0, if you have a different release of the CUDA SDK, you may need to update CUDA SDK paths in VanitySearch.vcxproj using a text editor. The current nvcc option are set up to architecture starting at 3.0 capability, for older hardware, add the desired compute capabilities to the list in GPUEngine.cu properties, CUDA C/C++, Device, Code Generation.
 
 ## Linux
